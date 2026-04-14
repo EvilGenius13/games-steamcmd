@@ -17,7 +17,7 @@
     },
     "file_denylist": [],
     "startup_commands": {
-        "Default": "wine /home/container/SNM2020/Binaries/Win64/SNMASServer-Win64-Shipping.exe -port={{SERVER_PORT}} -QueryPort={{QUERY_PORT}} -log"
+        "Default": "wine /home/container/SNM2020/Binaries/Win64/SNMASServer-Win64-Shipping.exe -port={{SERVER_PORT}} -QueryPort={{QUERY_PORT}} -log & SNM_PID=$!; until [ -f /home/container/SNM2020/Saved/Logs/SNM2020.log ]; do sleep 1; done; tail -f -n +1 /home/container/SNM2020/Saved/Logs/SNM2020.log --pid=$SNM_PID"
     },
     "config": {
         "files": "{}",
